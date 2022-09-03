@@ -11,18 +11,20 @@ let users=[
     },  
 ]
 
-module.exports.randomUser=(req,res)=>{
-    
-}
-module.exports.allUsers=(req,res)=>{
+module.exports.randomUser=(req,res,next)=>{
 
+    const random=users[Math.floor(Math.random()*users.length)]
+    res.json(random)
 }
-module.exports.saveUsers=(req,res)=>{
+// module.exports.allUsers=(req,res)=>{
 
-}
-module.exports.updateUsers=(req,res)=>{
+// }
+// module.exports.saveUsers=(req,res)=>{
 
-}
-module.exports.bulkUsers=(req,res)=>{
+// }
+// module.exports.updateUsers=(req,res)=>{
 
-}
+// }
+// module.exports.bulkUsers=(req,res)=>{
+
+// }
