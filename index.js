@@ -6,10 +6,12 @@ const app = express()
 const port = process.env.PORT || 5000
 const usersRoute = require('./routes/users.route');
 const dbConnect = require('./util/dbConnect');
+const loadUsers = require('./users');
 
 
 app.use(express.json())
 app.use(cors());
+
 
 dbConnect()
 app.use('/user', usersRoute)
