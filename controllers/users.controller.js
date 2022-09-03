@@ -22,7 +22,18 @@ module.exports.randomUser = (req, res, next) => {
 
 }
 module.exports.allUsers = (req, res) => {
-    res.json(users)
+    fs.readFile('users.json',(err,user)=>{
+        if(err){
+            res.write('Failed to read data!!!')
+            res.end()
+        }
+        else{
+           
+            res.write(user)
+            
+            res.end()
+        }
+    })
 }
 module.exports.saveUsers = (req, res) => {
 
