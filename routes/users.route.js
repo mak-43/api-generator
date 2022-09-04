@@ -11,12 +11,12 @@ router
 router
 .route('/save')
 .post(usersController.saveUsers)
-// router
-// .route('/update')
-// .patch(usersController.updateUsers)
-// router
-// .route('/bulk-update')
-// .patch(usersController.bulkUsers)
+router
+.route('/update')
+.patch(usersController.updateUsers)
+router
+.route('/bulk-update')
+.patch(usersController.bulkUsers)
 
 
 module.exports=router
