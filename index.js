@@ -21,18 +21,13 @@ app.use(cors({
 dbConnect()
 app.use('/user', usersRoute)
 
-
-
-
-
-
-
-
-
 app.all('*', (req, res) => {
     res.send('No route found')
 })
 
+app.get('/', (req, res) => {
+    res.send('Running Server !!!')
+})
 
 app.listen(port, () => {
     console.log('Listening to port', port)
