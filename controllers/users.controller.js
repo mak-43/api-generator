@@ -80,6 +80,34 @@ module.exports.saveUsers = (req, res) => {
   
 }
 module.exports.updateUsers=(req,res)=>{
+    fs.readFile('users.json',(err,user)=>{
+        if(err){
+            res.write('Failed to read data!!!')
+            res.end()
+        }
+        else{  
+            const test=JSON.parse(user)
+               
+           const {id}=req.params 
+          
+           const objIndex=test.findIndex(obj=>obj.id==id)
+            test[objIndex].id=req.body.id||id
+            test[objIndex].gender=req.body.gender
+            test[objIndex].name=req.body.name
+            test[objIndex].contact=req.body.contact
+            test[objIndex].address=req.body.address
+            test[objIndex].photoUrl=req.body.photoUrl
+            
+        
+           const data=JSON.stringify(test)
+           fs.writeFile('users.json',data,(err)=>{
+               if(err){
+                          res.write('Data Failed to write')
+                   res.end()  
+               }
+           })
+        }
+    })
 
 }
 module.exports.bulkUsers=(req,res)=>{

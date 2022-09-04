@@ -12,7 +12,7 @@ router
 .route('/save')
 .post(usersController.saveUsers)
 router
-.route('/update')
+.route('/update/:id')
 .patch(usersController.updateUsers)
 router
 .route('/bulk-update')
