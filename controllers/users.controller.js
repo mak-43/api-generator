@@ -113,3 +113,30 @@ module.exports.updateUsers=(req,res)=>{
 module.exports.bulkUsers=(req,res)=>{
 
 }
+module.exports.deleteUsers=(req,res)=>{
+    fs.readFile('users.json',(err,user)=>{
+        if(err){
+            res.write('Failed to read data!!!')
+            res.end()
+        }
+        else{  
+            const test=JSON.parse(user)
+               
+           const {id}=req.params 
+          
+           const objIndex=test.findIndex(obj=>obj.id==id)
+            test.splice(objIndex,1)
+            
+        
+           const data=JSON.stringify(test)
+           fs.writeFile('users.json',data,(err)=>{
+               if(err){
+                          res.write('Data Failed to write')
+                   res.end()  
+               }
+           })
+        }
+    })
+
+
+}
